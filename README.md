@@ -18,7 +18,3 @@ Create a meme with by:
 ## Screenshots
 
 ![meme](src/assets/app-icons/screenshots/screenshot.png)
-
-## License
-
-[The MIT License (MIT)](https://georapbox.mit-license.org/@2019)
