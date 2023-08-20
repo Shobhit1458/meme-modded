@@ -15,6 +15,3 @@ Create a meme with by:
 - Taking a photo with your device's web camera
 - Using a solid color as background
 
-## Screenshots
-
-![meme](src/assets/app-icons/screenshots/screenshot.png)
