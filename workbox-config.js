@@ -6,7 +6,7 @@ module.exports = {
   ],
   swDest: 'docs/service-worker.js',
   clientsClaim: true,
-  skipWaiting: true
+  skipWaiting: true,
   plugins: [
    {
     name: 'preset-default',
