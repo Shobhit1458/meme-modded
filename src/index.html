@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#eae9e9">
+  <meta name="description" content="Meme generator tool to easily create memes bu uploading images or taking a photo.">
+  <title>Meme Generator</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" sizes="192x192" href="assets/app-icons/favicon-192.png">
+  <link rel="apple-touch-icon" href="assets/app-icons/ios/180.png">
+</head>
+<body class="bg-body">
+  <div class="errorsContainer">
+    <div class="container-fluid mt-2">
+      <div class="row">
+        <div class="col-12" id="errorsContainer" style="max-width: 500px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row my-4 my-md-5 text-center">
+      <div class="col">
+        <h1 class="page-title">Meme Generator</h1>
+
+        <p class="text-muted mx-auto">Create memes by uploading image or taking photo.</p>
+
+      </div>
+    </div>
+
+    <div class="row mx-0 mb-5 py-4 bg-white border border-light rounded shadow">
+      <div class="col-lg-8 mb-3 mb-lg-0">
+        <div id="canvasPlaceholder" class="canvas-placeholder">
+          <canvas id="canvas" class="canvas border shadow-sm" hidden></canvas>
+
+          <div id="instructions" class="instructions">
+            <div class="fs-lg">
+              Drag & Drop an image or use any of the alternative upload methods to generate your meme.
+              <br>
+              The images are processed without being stored on any server.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <details class="mb-4" open>
+          <summary><strong>Image upload options</strong></summary>
+
+          <div class="bg-light py-4 px-3 border shadow-sm rounded">
+            <div class="form-group">
+              <select class="custom-select" id="imageUploadMethodSelect" title="Select upload method" autocomplete="off">
+                <option value="gallery">Upload from gallery</option>
+                <option value="fileInput">Upload from file</option>
+                <option value="imageUrlForm">Upload from URL</option>
+                <option value="openVideoModalBtn">Take photo</option>
+                <option value="solidColorForm">Use solid color</option>
+              </select>
+            </div>
+
+            <div class="upload-method gallery" id="gallery">
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/matrix-morpheus.jpg" alt="Matrix Morpheus"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/batman-slapping-robin.jpg" alt="Batman slapping Robin"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/captain-picard-facepalm.jpg" alt="Captain Picard facepalm"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/x-x-everywhere.jpg" alt="X X everywhere"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/always-has-been.jpg" alt="Always has been"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/anakin-padme.jpg" alt="Anakin Padme"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/bad-luck-brian.jpg" alt="Bad luck Brian"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/car-drift.jpg" alt="Car drift"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/disaster-girl.jpg" alt="Disaster girl"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/drake-hotline-bling.jpg" alt="Drake Hotline Bling"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/gibson-jesus.jpg" alt="Mel Gibson - Jesus Christ"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/i-dont-always.jpg" alt="I don't always"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/nervous.jpg" alt="Nervous"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/office-congrats.jpg" alt="Office congratulations"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/sad-pablo-escobar.jpg" alt="Sad Pablo Escobar"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/say-that-again-i-dare-you.jpg" alt="Say that again I dare you"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/success-kid.jpg" alt="Success kid"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/think-about-it.jpg" alt="Think about it"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/two-buttons.jpg" alt="Two buttons"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/change-my-mind.jpg" alt="Change my mind"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/ben-affleck-smoking.jpg" alt="Ben Affleck smoking"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/monk-temptation.jpg" alt="Monk temptation"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/sparta-leonidas.jpg" alt="Sparta Leonidas"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/i-see-dead-people.jpg" alt="I see dead people"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/distracted-boyfriend.jpg" alt="Distracted boyfriend"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/finding-neverland.jpg" alt="Finding Neverland"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/leonardo-dicaprio-cheers.jpg" alt="Leonardo Dicaprio cheers"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/you-guys-are-getting-paid.png" alt="You guys are getting paid"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/star-wars-yoda.jpg" alt="Star Wars Yoda"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/drowning-kid-in-the-pool.jpg" alt="Drowning kid in the pool"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/i-bet-hes-thinking-about-other-women.jpg" alt="I bet he's thinking about other women"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/one-does-not-simply.jpg" alt="One does not simply"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/hide-the-pain-harold.jpg" alt="Hide the pain Harold"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/laughing-leo.png" alt="Laughing Leo"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/whisper-and-goosebumps.jpg" alt="Whisper and goosebumps"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/toilet_guy.jpg" alt="Toilet guy"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/monkey_puppet.jpg" alt="Monkey pupet"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/water-tank-leaking-fix.png" alt="Water tank leaking fix"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/waiting-skeleton.jpg" alt="Waiting skeleton"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/sweating-bullets.jpg" alt="Sweating bullets"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/milk-girls.jpg" alt="Milk girls"></button>
+              <button type="button" class="btn"><img loading="lazy" src="assets/meme-templates/knight-with-arrow-in-helmet.jpg" alt="Knight with arrow in helmet"></button>
+            </div>
+
+            <input type="file" name="file[]" id="fileInput" autocomplete="off" class="upload-method form-control h-auto" hidden />
+
+            <form id="imageUrlForm" class="upload-method form-inline flex-nowrap" hidden>
+              <label class="sr-only" for="imageUrl">Image URL</label>
+
+              <input type="url" name="imageUrl" id="imageUrl" autocomplete="off" placeholder="Enter image URL" class="form-control mr-2 w-100" />
+
+              <button type="submit" class="btn btn-primary" style="min-width: 75px;">
+                <div class="spinner" hidden>
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <span class="label">Submit</span>
+              </button>
+            </form>
+
+            <button class="upload-method btn btn-primary btn-block d-flex align-items-center justify-content-center" id="openVideoModalBtn" hidden>
+              <img src="assets/icons/camera.svg" width="20" height="20" alt="Upload image" class="mr-2" />
+              Take Photo
+            </button>
+
+            <form id="solidColorForm" class="upload-method" hidden>
+              <div class="form-row">
+                <div class="col-4">
+                  <label for="canvasColor">Color:</label>
+                  <input type="color" name="canvasColor" id="canvasColor" class="form-control" value="#ffffff">
+                </div>
+
+                <div class="col-4">
+                  <label for="canvasWidth">Width:</label>
+                  <input type="number" name="canvasWidth" id="canvasWidth" class="form-control" min="0" max="800" value="600">
+                </div>
+
+                <div class="col-4">
+                  <label for="canvasHeight">Height:</label>
+                  <input type="number" name="canvasHeight" id="canvasHeight" class="form-control" min="0" max="800" value="400">
+                </div>
+              </div>
+            </form>
+          </div>
+        </details>
+
+        <details open>
+          <summary><strong>Text options</strong></summary>
+
+          <div id="inputsContainer" class="inputs-container"></div>
+
+          <div class="clearfix mt-3">
+            <button class="btn btn-outline-dark float-right d-flex align-items-center" id="addTextboxBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="18" height="18" class="mr-1">
+                <path fill="currentColor" d="M416 277.333H277.333V416h-42.666V277.333H96v-42.666h138.667V96h42.666v138.667H416v42.666z" />
+              </svg>
+              Add text
+            </button>
+          </div>
+        </details>
+
+        <button type="button" class="btn btn-primary btn-block mt-5 d-flex align-items-center justify-content-center" id="generateMemeBtn" disabled autocomplete="off">
+          Generate Meme
+        </button>
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="modal" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModal">
+    <div class="modal-dialog modal-lg shadow-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Capture image</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeVideoModalBtn">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="downloadModal" tabindex="-1" role="dialog" aria-labelledby="downloadModal">
+    <div class="modal-dialog modal-lg shadow-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Download Meme</h5>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="downloadMemeModalCloseBtn">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body text-center">
+          <p>
+            <img class="img-thumbnail" id="downloadMemePreview" alt="">
+          </p>
+
+          <p class="d-flex justify-content-center align-items-center">
+            <a class="btn btn-primary" href="#" download="" id="downloadMemeBtn">
+              <img src="assets/icons/save.svg" width="20" height="20" alt="Generate meme" class="mr-1" />
+              Download
+            </a>
+
+            <web-share class="ml-1" hidden>
+              <button slot="button" behavior="button" type="button" class="btn btn-dark">
+                <img src="assets/icons/share.svg" width="20" height="20" alt="Share" />
+                Share
+              </button>
+            </web-share>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/register-service-worker.js" type="module"></script>
+  <script src="./js/index.js" type="module"></script>
+</body>
+</html>
