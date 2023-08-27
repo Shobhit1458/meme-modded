@@ -9,7 +9,9 @@ module.exports = {
   skipWaiting: true,
   plugins: [
    {
-    name: 'preset-default',
+    { name: 'preset-default'},
+    { cleanupIDs: false },
    }
+
    ]
 };
